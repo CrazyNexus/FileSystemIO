@@ -20,6 +20,10 @@ namespace FileIO
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton logButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton readButton { get; set; }
 
         [Outlet]
@@ -29,6 +33,10 @@ namespace FileIO
         [Action ("FileButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void FileButton_TouchUpInside (UIKit.UIButton sender);
+
+        [Action ("LogButton_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void LogButton_TouchUpInside (UIKit.UIButton sender);
 
         [Action ("ReadButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -43,6 +51,11 @@ namespace FileIO
             if (fileButton != null) {
                 fileButton.Dispose ();
                 fileButton = null;
+            }
+
+            if (logButton != null) {
+                logButton.Dispose ();
+                logButton = null;
             }
 
             if (readButton != null) {

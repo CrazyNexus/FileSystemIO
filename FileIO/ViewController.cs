@@ -7,6 +7,8 @@
 using System;
 using UIKit;
 using System.IO;
+using System.Threading.Tasks;
+using System.Threading;
 
 
 namespace FileIO
@@ -62,6 +64,26 @@ namespace FileIO
 
 			var dirExists = Directory.Exists(dirname);
 
+		}
+
+		partial void LogButton_TouchUpInside(UIButton sender)
+		{
+			Task.Factory.StartNew(() =>
+			{
+				var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "log.txt");
+
+				if (!File.Exists(filePath))
+					File.Create(filePath);
+
+				for (var i = 0; i < 5; i++)
+				{
+					var time = DateTime.Now.ToShortTimeString();
+					File.AppendAllText(filePath, time + " ** ");
+					Thread.Sleep(1000);
+				}
+
+				Console.WriteLine(File.ReadAllText(filePath));
+			});
 		}
 	}
 }
