@@ -1,0 +1,3 @@
+﻿Das ist ein Text in der Datei
+und er hat viel Text
+mit vielen Zeilen.
